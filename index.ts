@@ -1,16 +1,13 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 
-interface Data {
-    projectId: string
-    workspace: string
-}
 
 const config = new pulumi.Config();
-const data = config.requireObject<Data>('dream');
+const projectId = config.require('dreamProjectId')
+const workspace = config.require('dreamWorkspace')
 
-console.log('projectId:', data.projectId);
-console.log('workspace:', data.workspace);
+console.log('projectId:', projectId);
+console.log('workspace:', workspace);
 
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket", {
