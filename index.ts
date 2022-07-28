@@ -5,9 +5,13 @@ import * as aws from "@pulumi/aws";
 const config = new pulumi.Config();
 const projectId = config.require('dreamProjectId')
 const workspace = config.require('dreamWorkspace')
+const projectDir = config.require('dreamProjectDir')
+const env = JSON.parse(config.require('dreamEnv'))
 
 console.log('projectId:', projectId);
 console.log('workspace:', workspace);
+console.log('projectDir:', projectDir);
+console.log('env:', env);
 
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket", {

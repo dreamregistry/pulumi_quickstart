@@ -1,4 +1,4 @@
-type: runtime
+type: deployment
 iac:
   type: pulumi
   language: nodejs
